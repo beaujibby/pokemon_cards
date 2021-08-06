@@ -3,8 +3,9 @@
     <head>
 
     </head>
-    <body style="height: 100vh; width: 100vw;">
-        <div style="height: 100vh; width: 100vw; display: flex; flex-direction: row; align-items: center; justify-content: center;">
+    <body style="height: 100vh; width: 100vw; display: flex; flex-direction: column; justify-content: center;">
+        <p style="height: 10vh; text-align: center;" id="progress"></p>
+        <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
             <button id="back" style="height: 10vh; width: 10vw;"><</button>
             <img style="max-width: 40vw; max-height: 60vh;" src="">
             <button id="forward" style="height: 10vh; width: 10vw;">></button>
@@ -14,6 +15,9 @@
             let id = parseInt(params.get("id"));
 
             let index = id || 1;
+
+            let progress = document.querySelector("#progress");
+            progress.innerText = index +" / 363";
 
             let back_button = document.querySelector("#back");
             let forward_button = document.querySelector("#forward");
