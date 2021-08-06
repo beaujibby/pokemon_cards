@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body style="height: 100vh; width: 100vw;">
+        <div style="height: 100vh; width: 100vw; display: flex; flex-direction: row; align-items: center; justify-content: center;">
+            <button id="back" style="height: 10vh; width: 10vw;"><</button>
+            <img style="max-width: 40vw; max-height: 60vh;" src="">
+            <button id="forward" style="height: 10vh; width: 10vw;">></button>
+        </div>
+        <script>
+            let params = new URLSearchParams(window.location.search);
+            let id = parseInt(params.get("id"));
+
+            let index = id || 1;
+
+            let back_button = document.querySelector("#back");
+            let forward_button = document.querySelector("#forward");
+            let img = document.querySelector("img");
+
+            img.src = "Card"+index+".jpeg";
+
+            let updateIndex = (offset) => {
+                index += offset;
+                if(index < 1) index = 1;
+                if(index > 363) index = 363;
+
+                window.location.search = "?id="+index;
+            }
+
+            back_button.onclick = () => {updateIndex(-1)}
+            forward_button.onclick = () => {updateIndex(1)}
+        </script>
+    </body>
+</html>
